@@ -250,7 +250,6 @@ $(function() {
                 remoteCandidateId = candidatePair.remoteCandidateId;
             }
         });
-        candidatePairArray.length = 0;
         candidateArray.forEach(candidate => {
             if(candidate.id === localCandidateId){
                 localCandidate = candidate;
