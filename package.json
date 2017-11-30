@@ -1,0 +1,14 @@
+{
+  "name": "skyway-js-skeleton",
+  "version": "1.0.0",
+  "description": "SkyWay skeleton app",
+  "main": "script.js",
+  "scripts": {
+    "start": "http-server -a 127.0.0.1 -p 8080 -o"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "http-server": "^0.10.0"
+  }
+}
