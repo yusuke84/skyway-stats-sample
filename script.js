@@ -18,7 +18,10 @@ $(function() {
     // Receiving a call
     peer.on('call', call => {
         // Answer the call automatically (instead of prompting user) for demo purposes
-        call.answer(localStream);
+        call.answer(localStream, {
+            // 発信側のコーデックを優先
+            //videoCodec: $('#videoCodec').val()
+        });
         step3(call);
     });
 
@@ -32,7 +35,9 @@ $(function() {
         e.preventDefault();
         // Initiate a call!
         console.log($('#callto-id').val());
-        const call = peer.call($('#callto-id').val(), localStream);
+        const call = peer.call($('#callto-id').val(), localStream, {
+            videoCodec: $('#videoCodec').val()
+        });
         step3(call);
     });
 
