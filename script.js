@@ -114,7 +114,7 @@ $(function() {
         const audioSource = $('#audioSource').val();
         const videoSource = $('#videoSource').val();
         const constraints = {
-            audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
+            audio: false,
             video: {deviceId: videoSource ? {exact: videoSource} : undefined},
         };
 
