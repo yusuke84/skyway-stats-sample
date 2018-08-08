@@ -190,10 +190,12 @@ $(function() {
         let outboundRTPAudioStreamArray = [];
         let outboundRTPVideoStreamArray = [];
         let codecArray = [];
-        let mediaStreamTrack_local_audioArray = [];
-        let mediaStreamTrack_local_videoArray = [];
-        let mediaStreamTrack_remote_audioArray = [];
-        let mediaStreamTrack_remote_videoArray = [];
+        let mediaStreamTrack_senderArray = [];
+        let mediaStreamTrack_receiverArray = [];
+        let mediaStreamTrack_local_audioArray = []
+        let mediaStreamTrack_remote_audioArray = []
+        let mediaStreamTrack_local_videoArray = []
+        let mediaStreamTrack_remote_videoArray = []
         let candidatePairId = '';
         let localCandidateId = '';
         let remoteCandidateId = '';
@@ -227,17 +229,11 @@ $(function() {
             if(stat.id.indexOf('RTCOutboundRTPVideoStream') !== -1){
                 outboundRTPVideoStreamArray.push(stat);
             }
-            if(stat.id.indexOf('RTCMediaStreamTrack_local_audio') !== -1){
-                mediaStreamTrack_local_audioArray.push(stat);
+            if(stat.id.indexOf('RTCMediaStreamTrack_sender') !== -1){
+                mediaStreamTrack_senderArray.push(stat);
             }
-            if(stat.id.indexOf('RTCMediaStreamTrack_local_video') !== -1){
-                mediaStreamTrack_local_videoArray.push(stat);
-            }
-            if(stat.id.indexOf('RTCMediaStreamTrack_remote_audio') !== -1){
-                mediaStreamTrack_remote_audioArray.push(stat);
-            }
-            if(stat.id.indexOf('RTCMediaStreamTrack_remote_video') !== -1){
-                mediaStreamTrack_remote_videoArray.push(stat);
+            if(stat.id.indexOf('RTCMediaStreamTrack_receiver') !== -1){
+                mediaStreamTrack_receiverArray.push(stat);
             }
             if(stat.id.indexOf('RTCCodec') !== -1){
                 codecArray.push(stat);
@@ -292,6 +288,20 @@ $(function() {
                 }
             });
         });   
+        mediaStreamTrack_senderArray.forEach(mediaStreamTrack => {
+            if(mediaStreamTrack.kind === 'audio'){
+                mediaStreamTrack_local_audioArray.push(mediaStreamTrack)
+            }else if(mediaStreamTrack.kind === 'video'){
+                mediaStreamTrack_local_videoArray.push(mediaStreamTrack)
+            }
+        });        
+        mediaStreamTrack_receiverArray.forEach(mediaStreamTrack => {
+            if(mediaStreamTrack.kind === 'audio'){
+                mediaStreamTrack_remote_audioArray.push(mediaStreamTrack)
+            }else if(mediaStreamTrack.kind === 'video'){
+                mediaStreamTrack_remote_videoArray.push(mediaStreamTrack)
+            }
+        });       
 
         $('#local-candidate').html(localCandidate.ip + ':' + localCandidate.port + '(' +localCandidate.protocol + ')' + '<BR>type:' + localCandidate.candidateType);
         $('#remote-candidate').html(remoteCandidate.ip + ':' + remoteCandidate.port + '(' +remoteCandidate.protocol + ')' + '<BR>type:' + remoteCandidate.candidateType);
