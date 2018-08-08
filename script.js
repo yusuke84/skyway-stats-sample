@@ -3,7 +3,7 @@ $(function() {
     // Peer object
     const peer = new Peer({
         key:   window.__SKYWAY_KEY__,
-        debug: 3,
+        debug: 3
     });
 
     let localStream;
@@ -312,8 +312,8 @@ $(function() {
         $('#inbound-audio').html('bytesReceived:' + inboundRTPAudioStreamArray[0].bytesReceived + '<BR>jitter:' + inboundRTPAudioStreamArray[0].jitter + '<BR>fractionLost:' + inboundRTPAudioStreamArray[0].fractionLost);
         $('#inbound-video').html('bytesReceived:' + inboundRTPVideoStreamArray[0].bytesReceived + '<BR>fractionLost:' + inboundRTPVideoStreamArray[0].fractionLost);
         
-        $('#outbound-audio').html('bytesReceived:' + outboundRTPAudioStreamArray[0].bytesSent);
-        $('#outbound-video').html('bytesReceived:' + outboundRTPVideoStreamArray[0].bytesSent);
+        $('#outbound-audio').html('bytesSent:' + outboundRTPAudioStreamArray[0].bytesSent);
+        $('#outbound-video').html('bytesSent:' + outboundRTPVideoStreamArray[0].bytesSent);
 
         $('#local-audio-video').html('audioLevel:' + mediaStreamTrack_local_audioArray[0].audioLevel + '<BR>frameHeight:' + mediaStreamTrack_local_videoArray[0].frameHeight + '<BR>frameWidth:' + mediaStreamTrack_local_videoArray[0].frameWidth + '<BR>framesSent:' + mediaStreamTrack_local_videoArray[0].framesSent);
         $('#remote-audio-video').html('audioLevel:' + mediaStreamTrack_remote_audioArray[0].audioLevel + '<BR>frameHeight:' + mediaStreamTrack_local_videoArray[0].frameHeight + '<BR>frameWidth:' + mediaStreamTrack_remote_videoArray[0].frameWidth);
