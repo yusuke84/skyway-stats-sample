@@ -55,8 +55,9 @@ $(function() {
 
     // Getting Stats 
     $('#getting-stats').on('click', () => {
+        const _PC = existingCall.getPeerConnection();
         timer = setInterval(()=>{
-            getRTCStats(existingCall._negotiator._pc.getStats())
+            getRTCStats(_PC.getStats())
         },1000);
         step4();
     });
